@@ -5,24 +5,24 @@ laravelのデフォルトindex.phpにlocalhostでアクセスできなくて死�
 
 ===default.conf===
 
-server {
-  listen 80;
-    index  index.php;
-    root /var/www/laravel/public;
+    server {
+      listen 80;
+        index  index.php;
+        root /var/www/laravel/public;
 
-  location / {
-    root /var/www/laravel/public;
-    index  index.php;
-    }
+      location / {
+        root /var/www/laravel/public;
+        index  index.php;
+        }
 
-  location ~ \.php$ {
+      location ~ \.php$ {
 
-    try_files $uri =404;
-    fastcgi_split_path_info ^(.+\.php)(/.+)$;
-    fastcgi_pass app:9000;
-    fastcgi_index index.php;
-    include fastcgi_params;
-      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-      fastcgi_param PATH_INFO $fastcgi_path_info;
-  }
- }
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass app:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+          fastcgi_param PATH_INFO $fastcgi_path_info;
+      }
+     }
